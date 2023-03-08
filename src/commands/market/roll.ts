@@ -1,5 +1,6 @@
 import { Client, Message, TextChannel } from "discord.js";
 import { HydratedDocument } from "mongoose";
+import User from "../../database/User";
 import ItemHandler from "../../handlers/ItemHandler";
 import { Rarity } from "../../market/Rarities";
 import { IUser } from "../../util/types";
@@ -17,7 +18,7 @@ export default {
     args: string[],
     user: HydratedDocument<IUser>
   ) => {
-    const roll = () => {
+    const roll = async () => {
       const item = ItemHandler.getRandomItem(); // Get random item
       // Write to user what item they got along with the items rarity
       message.reply(
@@ -27,6 +28,12 @@ export default {
           item.name.toUpperCase() +
           "!**__"
       );
+
+      await ItemHandler.giveUserItem(user, item);
+
+      const newUser = await User.findOne({ id: user.id });
+
+      console.log(newUser);
     };
 
     roll();

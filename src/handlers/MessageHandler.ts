@@ -20,7 +20,15 @@ const onMessage = async (client: Client, message: Message) => {
     absUser = await User.create({
       id: message.author.id,
       items: [],
+      armour: null,
+      weapon: null,
+      health: 100,
+      maxHealth: 100,
+      mana: 100,
+      maxMana: 100,
     });
+  } else {
+    absUser = user;
   }
 
   if (message.channel instanceof TextChannel) {

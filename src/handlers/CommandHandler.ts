@@ -49,6 +49,7 @@ const handleCommands = (
       loadedCommand.aliases?.includes(args[0])
     ) {
       // Run command
+      args.shift();
       loadedCommand.execute(client, message, args, user);
     }
   });

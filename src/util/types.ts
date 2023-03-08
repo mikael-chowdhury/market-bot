@@ -1,18 +1,6 @@
 import { Client, Message } from "discord.js";
 import { HydratedDocument } from "mongoose";
 
-export interface Command {
-  trigger: string;
-  aliases?: string[];
-  category: string;
-  execute: (
-    client: Client,
-    message: Message,
-    args: string[],
-    user: HydratedDocument<IUser>
-  ) => void;
-}
-
 export interface PreLoadCommand {
   trigger: string;
   aliases?: string[];
@@ -22,6 +10,10 @@ export interface PreLoadCommand {
     args: string[],
     user: HydratedDocument<IUser>
   ) => void;
+}
+
+export interface Command extends PreLoadCommand {
+  category: string;
 }
 
 export interface Enchantment {
@@ -38,28 +30,43 @@ export interface ItemMetaData {
   spiritualDamage: number;
 }
 
-export interface DBItem {
-  name: string;
+export interface DBItem extends Item {
   id: string;
-  rarity: number;
-  itemtype: string;
-  metadata: ItemMetaData;
 }
 
-export interface Item {
-  name: string;
-  rarity: number;
+export interface Item extends PreLoadItem {
   itemtype: string;
-  metadata: ItemMetaData;
 }
 
-export interface PreloadItem {
+export interface PreLoadItem {
   name: string;
   rarity: number;
   metadata: ItemMetaData;
+}
+
+export interface Weapon extends PreLoadItem {
+  bonusHealth: number;
+  bonusMana: number;
+}
+
+export interface Armour extends PreLoadItem {
+  bonusHealth: number;
+  bonusMana: number;
 }
 
 export interface IUser {
   id: string;
   items: Item[];
+  chests: Array<Number>;
+
+  health: number;
+  maxHealth: number;
+  mana: number;
+  maxMana: number;
+  armour: Armour;
+  weapon: Weapon;
+}
+
+export interface LooseObject {
+  [key: string]: any;
 }
