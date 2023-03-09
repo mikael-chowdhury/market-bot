@@ -4,7 +4,13 @@ import { Item, IUser, Armour } from "../util/types";
 const UserSchema = new mongoose.Schema<IUser>({
   id: String,
   items: Array<Item>,
+
   chests: Array<Number>,
+  chestCapacity: {
+    type: Number,
+    default: 5,
+  },
+
   armour: {
     type: Object,
     default: null,

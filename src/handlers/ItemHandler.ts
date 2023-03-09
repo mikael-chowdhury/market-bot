@@ -43,10 +43,10 @@ const getRandomItem = () => {
   return items[Math.floor(Math.random() * items.length)]; // Return random item of chosen rarity
 };
 
-const getItemByName = (name: string) => {
-  let item;
+const getItemByName = (name: string): Item | null => {
+  let item: Item | null = null;
 
-  loadedItems.forEach((i) => {
+  loadedItems.forEach((i, index) => {
     if (i.name.toLowerCase() == name.toLowerCase()) {
       item = i;
     }
@@ -60,10 +60,10 @@ const giveUserItem = async (user: HydratedDocument<IUser>, item: Item) => {
   await user.save();
 };
 
-const countOccurrences = (arr: string[]) => {
+const countOccurrences = <T>(arr: T[]) => {
   const counts: LooseObject = {};
   for (const element of arr) {
-    counts[element] = (counts[element] || 0) + 1;
+    counts[element as string] = (counts[element as string] || 0) + 1;
   }
   return Object.entries(counts).map(
     ([element, count]) => `${count}x ${element}`
@@ -76,4 +76,5 @@ export default {
   giveUserItem,
   getItemByName,
   countOccurrences,
+  rarityItems,
 };

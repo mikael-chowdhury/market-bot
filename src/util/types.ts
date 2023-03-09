@@ -57,7 +57,9 @@ export interface Armour extends PreLoadItem {
 export interface IUser {
   id: string;
   items: Item[];
+
   chests: Array<Number>;
+  chestCapacity: number;
 
   health: number;
   maxHealth: number;
