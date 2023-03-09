@@ -30,31 +30,25 @@ export default {
       );
 
       await ItemHandler.giveUserItem(user, item);
-
-      const newUser = await User.findOne({ id: user.id });
-
-      console.log(newUser);
     };
 
-    roll();
-
-    // if (!rolls.has(message.author.id)) {
-    //   rolls.set(message.author.id, new Date(Date.now()));
-    //   roll();
-    // } else {
-    //   const now = Date.now();
-    //   const diffMs = now - (rolls.get(message.author.id) as Date).getTime();
-    //   const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000);
-    //   if (diffMins >= 1440) {
-    //     rolls.set(message.author.id, new Date(Date.now()));
-    //     roll();
-    //   } else {
-    //     message.reply(
-    //       "you have to wait " +
-    //         (1440 - diffMins) / 60 +
-    //         "hrs before you can roll again"
-    //     );
-    //   }
-    // }
+    if (!rolls.has(message.author.id)) {
+      rolls.set(message.author.id, new Date(Date.now()));
+      roll();
+    } else {
+      const now = Date.now();
+      const diffMs = now - (rolls.get(message.author.id) as Date).getTime();
+      const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000);
+      if (diffMins >= 30) {
+        rolls.set(message.author.id, new Date(Date.now()));
+        roll();
+      } else {
+        message.reply(
+          "you have to wait " +
+            Math.round((30 - diffMins) * 10) / 10 +
+            "mins before you can roll again"
+        );
+      }
+    }
   },
 };

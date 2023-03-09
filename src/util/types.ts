@@ -35,7 +35,7 @@ export interface DBItem extends Item {
 }
 
 export interface Item extends PreLoadItem {
-  itemtype: string;
+  itemType: string;
 }
 
 export interface PreLoadItem {

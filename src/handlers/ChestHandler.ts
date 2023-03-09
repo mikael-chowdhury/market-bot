@@ -20,7 +20,7 @@ const openChest = async (
     const item = items[Math.floor(Math.random() * items.length)];
     await ItemHandler.giveUserItem(user, item);
     message.reply(
-      "you unboxed a a **" +
+      "you unboxed a **" +
         Rarity[item.rarity] +
         "** __**" +
         item.name.toUpperCase() +

@@ -8,7 +8,7 @@ import { IUser } from "../../util/types";
 
 export default {
   trigger: "giveitem",
-  aliases: [],
+  aliases: ["gi"],
   execute: async (
     client: Client,
     message: Message,

@@ -12,7 +12,9 @@ const connect = async (): Promise<void> => {
         Buffer.from(process.env.MONGOOSE_URI as string, "base64").toString(
           "ascii"
         ),
-        {}
+        {
+          connectTimeoutMS: 1000,
+        }
       )
       .then(() => {
         console.log(colors.red("connected to mongodb database"));

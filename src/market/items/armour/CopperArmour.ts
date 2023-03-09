@@ -1,10 +1,10 @@
-import { PreLoadItem, Weapon } from "../../../util/types";
+import { Armour, PreLoadItem, Weapon } from "../../../util/types";
 import { Rarity } from "../../Rarities";
 
 export default {
-  name: "Copper Sword",
+  name: "Copper Armour",
   rarity: Rarity.COMMON,
-  bonusHealth: 0,
+  bonusHealth: 15,
   bonusMana: 0,
   metadata: {
     durability: 150,
@@ -12,6 +12,6 @@ export default {
     unbreakable: false,
     magicalDamage: 0,
     spiritualDamage: 0,
-    physicalDamage: 10,
+    physicalDamage: 0,
   },
-} as Weapon;
+} as Armour;

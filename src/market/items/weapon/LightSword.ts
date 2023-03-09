@@ -1,7 +1,17 @@
-import { PreLoadItem } from "../../../util/types";
+import { PreLoadItem, Weapon } from "../../../util/types";
 import { Rarity } from "../../Rarities";
 
 export default {
   name: "Light Sword",
   rarity: Rarity.MYTHICAL,
-} as PreLoadItem;
+  bonusHealth: 0,
+  bonusMana: 0,
+  metadata: {
+    durability: 1500,
+    enchantments: [],
+    unbreakable: false,
+    magicalDamage: 0,
+    spiritualDamage: 0,
+    physicalDamage: 125,
+  },
+} as Weapon;
