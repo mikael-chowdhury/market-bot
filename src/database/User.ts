@@ -39,6 +39,22 @@ const UserSchema = new mongoose.Schema<IUser>({
     required: true,
     default: 100,
   },
+
+  skill1: {
+    type: Object,
+    required: true,
+    default: null,
+  },
+  skill2: {
+    type: Object,
+    required: true,
+    default: null,
+  },
+  skill3: {
+    type: Object,
+    required: true,
+    default: null,
+  },
 });
 
 export default mongoose.model<IUser>("User", UserSchema);

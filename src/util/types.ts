@@ -1,5 +1,6 @@
 import { Client, Message } from "discord.js";
 import { HydratedDocument } from "mongoose";
+import Slash from "../market/items/skills/Slash";
 
 export interface PreLoadCommand {
   trigger: string;
@@ -54,6 +55,15 @@ export interface Armour extends PreLoadItem {
   bonusMana: number;
 }
 
+export interface DBSkill {
+  name: string;
+  description: string;
+}
+
+export interface Skill extends DBSkill {
+  onUse: (user: HydratedDocument<IUser>) => void;
+}
+
 export interface IUser {
   id: string;
   items: Item[];
@@ -65,10 +75,63 @@ export interface IUser {
   maxHealth: number;
   mana: number;
   maxMana: number;
+
   armour: Armour;
   weapon: Weapon;
+
+  skill1: DBSkill | null;
+  skill2: DBSkill | null;
+  skill3: DBSkill | null;
 }
 
 export interface LooseObject {
   [key: string]: any;
+}
+
+export class CLASSES {
+  static WARRIOR = new CLASSES(
+    "Warrior",
+    "Master of melee combat with high strength and toughness",
+    125,
+    75,
+    25,
+    0,
+    0,
+    Slash
+  );
+
+  public name: string;
+  public description: string;
+
+  public physicalDamage: number;
+  public magicalDamage: number;
+  public spiritualDamage: number;
+
+  public health: number;
+  public mana: number;
+
+  public defaultSkill: Skill;
+
+  constructor(
+    name: string,
+    description: string,
+    health: number,
+    mana: number,
+    physicalDamage: number,
+    magicalDamage: number,
+    spiritualDamage: number,
+    defaultSkill: Skill
+  ) {
+    this.name = name;
+    this.description = description;
+
+    this.physicalDamage = physicalDamage;
+    this.magicalDamage = magicalDamage;
+    this.spiritualDamage = spiritualDamage;
+
+    this.health = health;
+    this.mana = mana;
+
+    this.defaultSkill = defaultSkill;
+  }
 }
