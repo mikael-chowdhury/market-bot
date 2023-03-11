@@ -6,14 +6,14 @@ export default {
   rarity: Rarity.UNOBTAINABLE,
   bonusHealth: 0,
   bonusMana: 0,
-  criticalChance: 45,
-  criticalMultiplier: 1.6,
+  criticalChance: 90,
+  criticalMultiplier: 1.8,
   metadata: {
     durability: 3000,
     enchantments: [],
     unbreakable: false,
     magicalDamage: 0,
     spiritualDamage: 0,
-    physicalDamage: 175,
+    physicalDamage: 100,
   },
 } as Weapon;

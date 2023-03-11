@@ -6,6 +6,8 @@ export default {
   rarity: Rarity.EPIC,
   bonusHealth: 0,
   bonusMana: 0,
+  criticalChance: 25,
+  criticalMultiplier: 1.3,
   metadata: {
     durability: 450,
     enchantments: [],

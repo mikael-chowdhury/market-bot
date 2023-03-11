@@ -2,18 +2,18 @@ import { PreLoadItem, Weapon } from "../../../util/types";
 import { Rarity } from "../../Rarities";
 
 export default {
-  name: "Shadow Sword",
-  rarity: Rarity.UNOBTAINABLE,
+  name: "Steel Knife",
+  rarity: Rarity.RARE,
   bonusHealth: 0,
   bonusMana: 0,
-  criticalChance: 45,
-  criticalMultiplier: 1.6,
+  criticalChance: 40,
+  criticalMultiplier: 1.3,
   metadata: {
-    durability: 3000,
+    durability: 300,
     enchantments: [],
     unbreakable: false,
     magicalDamage: 0,
     spiritualDamage: 0,
-    physicalDamage: 175,
+    physicalDamage: 20,
   },
 } as Weapon;

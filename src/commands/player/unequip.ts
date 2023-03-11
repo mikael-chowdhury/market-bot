@@ -1,6 +1,6 @@
 import { Client, Message, TextChannel } from "discord.js";
 import { HydratedDocument } from "mongoose";
-import { Armour, Item, IUser } from "../../util/types";
+import { Armour, Item, IUser, Weapon } from "../../util/types";
 
 // Unequip a user's item
 
@@ -27,7 +27,7 @@ export default {
         } else if (type == "weapon") {
           if (user.weapon) {
             user.items.push(user.weapon as unknown as Item);
-            user.weapon = null as unknown as Armour;
+            user.weapon = null as unknown as Weapon;
             await user.save();
             message.reply("Successfully unequipped weapon");
           } else return message.reply("You don't have a weapon equipped!");

@@ -6,6 +6,8 @@ export default {
   rarity: Rarity.MYTHICAL,
   bonusHealth: 0,
   bonusMana: 0,
+  criticalChance: 40,
+  criticalMultiplier: 1.5,
   metadata: {
     durability: 1500,
     enchantments: [],

@@ -1,4 +1,4 @@
-import { Chests } from "./../../market/Chests";
+import { Chests } from "../../market/Chests";
 import { Client, Message, TextChannel } from "discord.js";
 import { HydratedDocument } from "mongoose";
 import { Rarity } from "../../market/Rarities";

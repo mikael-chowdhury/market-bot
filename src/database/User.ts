@@ -39,20 +39,31 @@ const UserSchema = new mongoose.Schema<IUser>({
     required: true,
     default: 100,
   },
+  criticalChance: {
+    type: Number,
+    required: true,
+    default: 15,
+  },
+  criticalMultiplier: {
+    type: Number,
+    required: true,
+    default: 1.2,
+  },
+
+  physicalDamage: Number,
+  magicalDamage: Number,
+  spiritualDamage: Number,
 
   skill1: {
     type: Object,
-    required: true,
     default: null,
   },
   skill2: {
     type: Object,
-    required: true,
     default: null,
   },
   skill3: {
     type: Object,
-    required: true,
     default: null,
   },
 });

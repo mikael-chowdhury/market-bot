@@ -1,5 +1,7 @@
 import { Client, Message } from "discord.js";
 import { HydratedDocument } from "mongoose";
+import Backstab from "../market/items/skills/Backstab";
+import Firebolt from "../market/items/skills/Firebolt";
 import Slash from "../market/items/skills/Slash";
 
 export interface PreLoadCommand {
@@ -48,6 +50,8 @@ export interface PreLoadItem {
 export interface Weapon extends PreLoadItem {
   bonusHealth: number;
   bonusMana: number;
+  criticalChance: number;
+  criticalMultiplier: number;
 }
 
 export interface Armour extends PreLoadItem {
@@ -76,6 +80,13 @@ export interface IUser {
   mana: number;
   maxMana: number;
 
+  physicalDamage: number;
+  magicalDamage: number;
+  spiritualDamage: number;
+
+  criticalChance: number;
+  criticalMultiplier: number;
+
   armour: Armour;
   weapon: Weapon;
 
@@ -97,7 +108,35 @@ export class CLASSES {
     25,
     0,
     0,
+    10,
+    1.4,
     Slash
+  );
+
+  static MAGE = new CLASSES(
+    "Mage",
+    "Master of arcane magic with high magical damage and mana",
+    75,
+    125,
+    0,
+    25,
+    0,
+    15,
+    1.2,
+    Firebolt
+  );
+
+  static ROGUE = new CLASSES(
+    "Rogue",
+    "Master of stealth and subterfuge with high agility and critical chance.",
+    50,
+    0,
+    40,
+    0,
+    0,
+    40,
+    1.5,
+    Backstab
   );
 
   public name: string;
@@ -106,6 +145,9 @@ export class CLASSES {
   public physicalDamage: number;
   public magicalDamage: number;
   public spiritualDamage: number;
+
+  public criticalChance: number;
+  public criticalMultiplier: number;
 
   public health: number;
   public mana: number;
@@ -120,6 +162,8 @@ export class CLASSES {
     physicalDamage: number,
     magicalDamage: number,
     spiritualDamage: number,
+    criticalChance: number,
+    criticalMultiplier: number,
     defaultSkill: Skill
   ) {
     this.name = name;
@@ -128,6 +172,9 @@ export class CLASSES {
     this.physicalDamage = physicalDamage;
     this.magicalDamage = magicalDamage;
     this.spiritualDamage = spiritualDamage;
+
+    this.criticalChance = criticalChance;
+    this.criticalMultiplier = criticalMultiplier;
 
     this.health = health;
     this.mana = mana;

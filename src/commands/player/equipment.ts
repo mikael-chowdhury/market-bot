@@ -25,6 +25,15 @@ export default {
             `Armour - ${
               user.armour ? user.armour.name : "No Armour Equipped"
             }\n\n` +
+            `Skill 1 - ${
+              user.skill1 ? user.skill1.name : "No Skill Equipped"
+            }\n` +
+            `Skill 2 - ${
+              user.skill2 ? user.skill2.name : "No Skill Equipped"
+            }\n` +
+            `Skill 3 - ${
+              user.skill3 ? user.skill3.name : "No Skill Equipped"
+            }\n\n` +
             `**${config.prefix}eq <item name>** to equip item`
         );
       } else {
